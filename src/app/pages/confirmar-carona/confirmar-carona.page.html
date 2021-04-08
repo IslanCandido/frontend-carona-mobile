@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Confirmar Carona</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Mensagem</ion-label>
+          <ion-textarea rows="3" cols="20"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item-group>
+    <ion-list>
+      <ion-item-divider>
+        <ion-item>
+          <ion-icon slot="start" name="calendar-sharp"></ion-icon>
+          <ion-label>20/04/2021 12:00</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-button color="success" expand="block">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-button slot="end" color="danger" expand="block">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-item-divider>
+
+      <ion-item>
+        <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+        <ion-label>Islan Cândido A. Martins</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon slot="start" name="location-sharp"></ion-icon>
+        <ion-label>Estacionamento Flamboyant</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon slot="start" name="cash-sharp"></ion-icon>
+        <ion-label>Dinheiro(25 R$)</ion-label>
+        <ion-label>2 Acompanhantes</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-item-group>
+</ion-content>

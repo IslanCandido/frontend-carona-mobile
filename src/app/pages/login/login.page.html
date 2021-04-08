@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-item button (click)="navegar('registrar-usuario')" color="primary" slot="end">
+      Sing in
+      <ion-icon slot="end" name="arrow-forward-circle-outline"></ion-icon>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="header">
+    <h1>Login</h1>
+    <img src="assets/icon/logo.png" />
+  </div>
+
+  <form id="form" #frm="ngForm">
+    <ion-grid>
+      <ion-row> 
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Usuário</ion-label>
+            <ion-input [(ngModel)]="usu.cpf" name="cpf" autocomplete="off" type="text" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Senha</ion-label>
+            <ion-input [(ngModel)]="usu.senha" name="senha" autocomplete="off" type="password" minlength="8"
+            maxlength="20" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="navegar('home')" [disabled]="frm.invalid" expand="block" shape="round">Login</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

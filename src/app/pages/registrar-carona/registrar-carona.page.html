@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Registrar Carona</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <ion-item>
+            <ion-input placeholder="Cod. Verificador" expand="block" autocomplete="off" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button color="primary" size="default" expand="block">
+            <ion-icon slot="start" name="search"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div>
+    <form id="form" #frm="ngForm">
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Rota</ion-label>
+          <ion-input [(ngModel)]="carona.rota.verificador" name="codVerificador" readonly="true" autocomplete="off"
+            type="text" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Usuário(CPF)</ion-label>
+          <ion-input [(ngModel)]="carona.usuario.cpf" name="cpf" autocomplete="off" type="text" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Horário</ion-label>
+          <ion-input [(ngModel)]="carona.horario_aproximado" name="horario" autocomplete="off" type="time" required>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Acompanhantes</ion-label>
+          <ion-input [(ngModel)]="carona.acompanhantes" name="acompanhantes" autocomplete="off" type="number" required>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Ponto Encontro</ion-label>
+          <ion-input [(ngModel)]="carona.ponto_encontro" name="pontoEncontro" autocomplete="off" type="text" required>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Contribuição</ion-label>
+          <ion-select [(ngModel)]="carona.contribuicao.id" name="contribuicao" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="Dinheiro">Dinheiro(25 R$)</ion-select-option>
+            <ion-select-option value="blonde">0800</ion-select-option>
+            <ion-select-option value="black">1/2 Gasolina</ion-select-option>
+            <ion-select-option value="red">Cartão ou Dinheiro(50 R$)</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button (click)="salvar(frm)" [disabled]="frm.invalid" color="primary" expand="block" shape="round">
+              Salvar
+              <ion-icon slot="start" name="save-sharp"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="excluir(carona.id, frm)" [disabled]="frm.invalid" color="primary" expand="block"
+              shape="round">
+              Remover
+              <ion-icon slot="start" name="trash-sharp"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+</ion-content>
