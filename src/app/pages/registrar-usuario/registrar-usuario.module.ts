@@ -8,12 +8,15 @@ import { RegistrarUsuarioPageRoutingModule } from './registrar-usuario-routing.m
 
 import { RegistrarUsuarioPage } from './registrar-usuario.page';
 
+import {NgxMaskIonicModule} from 'ngx-mask-ionic'
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RegistrarUsuarioPageRoutingModule
+    RegistrarUsuarioPageRoutingModule,
+    NgxMaskIonicModule
   ],
   declarations: [RegistrarUsuarioPage]
 })

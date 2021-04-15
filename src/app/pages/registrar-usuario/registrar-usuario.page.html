@@ -19,7 +19,8 @@
       <ion-list>
         <ion-item>
           <ion-label position="stacked">CPF</ion-label>
-          <ion-input [(ngModel)]="usuario.cpf" name="cpf" autocomplete="off" type="text" required></ion-input>
+          <ion-input [(ngModel)]="usuario.cpf" name="cpf" autocomplete="off" type="text" mask="000.000.000-00"
+            minlength="14" maxlength="14" [dropSpecialCharacters]="false" required></ion-input>
         </ion-item>
       </ion-list>
       <ion-list>
@@ -54,7 +55,7 @@
       </ion-list>
       <ion-button (click)="salvar(frm)" [disabled]="frm.invalid" color="primary" expand="block" shape="round">
         Salvar
-        <ion-icon slot="start" name="save-sharp"></ion-icon>
+        <ion-icon slot="start" name="save-outline"></ion-icon>
       </ion-button>
     </form>
   </div>

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-item button (click)="navegar('registrar-usuario')" color="primary" slot="end">
+    <ion-item button routerLink="/registrar-usuario" color="primary" slot="end">
       Sing in
       <ion-icon slot="end" name="arrow-forward-circle-outline"></ion-icon>
     </ion-item>
@@ -15,11 +15,12 @@
 
   <form id="form" #frm="ngForm">
     <ion-grid>
-      <ion-row> 
+      <ion-row>
         <ion-col>
           <ion-item>
             <ion-label position="floating">Usuário</ion-label>
-            <ion-input [(ngModel)]="usu.cpf" name="cpf" autocomplete="off" type="text" required></ion-input>
+            <ion-input [(ngModel)]="usu.cpf" name="cpf" autocomplete="off" type="text" mask="000.000.000-00"
+              minlength="14" maxlength="14" [dropSpecialCharacters]="false" required></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -28,7 +29,7 @@
           <ion-item>
             <ion-label position="floating">Senha</ion-label>
             <ion-input [(ngModel)]="usu.senha" name="senha" autocomplete="off" type="password" minlength="8"
-            maxlength="20" required></ion-input>
+              maxlength="20" required></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
