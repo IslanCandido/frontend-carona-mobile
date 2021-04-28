@@ -12,11 +12,12 @@
       <ion-row>
         <ion-col size="8">
           <ion-item>
-            <ion-input placeholder="Cod. Verificador" expand="block" autocomplete="off" type="text"></ion-input>
+            <ion-input [(ngModel)]="consultaCarona" name="consulta" placeholder="Cod. Verificador" expand="block"
+              autocomplete="off" type="text" minlength="8" maxlength="8"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="4">
-          <ion-button color="primary" size="default" expand="block">
+          <ion-button (click)="consultarCarona(consultaCarona)" color="primary" size="default" expand="block">
             <ion-icon slot="start" name="search"></ion-icon>
           </ion-button>
         </ion-col>
@@ -28,14 +29,15 @@
       <ion-list>
         <ion-item>
           <ion-label position="stacked">Rota</ion-label>
-          <ion-input [(ngModel)]="carona.rota.verificador" name="codVerificador" readonly="true" autocomplete="off"
-            type="text" required></ion-input>
+          <ion-input [(ngModel)]="carona.rota.verificador" (blur)="consultarRota($event.target.value)"
+            name="codVerificador" readonly="true" autocomplete="off" type="text" required></ion-input>
         </ion-item>
       </ion-list>
       <ion-list>
         <ion-item>
           <ion-label position="stacked">Usuário(CPF)</ion-label>
-          <ion-input [(ngModel)]="carona.usuario.cpf" name="cpf" autocomplete="off" type="text" required></ion-input>
+          <ion-input [(ngModel)]="carona.usuario.cpf" name="cpf" mask="000.000.000-00" minlength="14" maxlength="14"
+            autocomplete="off" type="text" [dropSpecialCharacters]="false" required></ion-input>
         </ion-item>
       </ion-list>
       <ion-list>
@@ -61,28 +63,27 @@
       </ion-list>
       <ion-list>
         <ion-item>
-          <ion-label position="floating">Contribuição</ion-label>
+          <ion-label position="stacked">Contribuição</ion-label>
           <ion-select [(ngModel)]="carona.contribuicao.id" name="contribuicao" okText="Okay" cancelText="Dismiss">
-            <ion-select-option value="Dinheiro">Dinheiro(25 R$)</ion-select-option>
-            <ion-select-option value="blonde">0800</ion-select-option>
-            <ion-select-option value="black">1/2 Gasolina</ion-select-option>
-            <ion-select-option value="red">Cartão ou Dinheiro(50 R$)</ion-select-option>
+            <ion-select-option *ngFor="let contribuicao of contribuicoes" value="{{ contribuicao.id }}">
+              {{contribuicao.tipo }}({{ contribuicao.valor }})
+            </ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-button (click)="salvar(frm)" [disabled]="frm.invalid" color="primary" expand="block" shape="round">
+            <ion-button (click)="salvar(frm)" [disabled]="frm.invalid" color="success" expand="block" shape="round">
               Salvar
-              <ion-icon slot="start" name="save-sharp"></ion-icon>
+              <ion-icon slot="start" name="save-outline"></ion-icon>
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button (click)="excluir(carona.id, frm)" [disabled]="frm.invalid" color="primary" expand="block"
+            <ion-button (click)="excluir(carona.id, frm)" [disabled]="frm.invalid" color="danger" expand="block"
               shape="round">
               Remover
-              <ion-icon slot="start" name="trash-sharp"></ion-icon>
+              <ion-icon slot="start" name="trash-outline"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>

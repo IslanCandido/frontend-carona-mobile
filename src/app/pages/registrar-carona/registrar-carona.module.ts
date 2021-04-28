@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { RegistrarCaronaPageRoutingModule } from './registrar-carona-routing.module';
 
 import { RegistrarCaronaPage } from './registrar-carona.page';
+import { NgxMaskIonicModule } from 'ngx-mask-ionic'
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RegistrarCaronaPageRoutingModule
+    RegistrarCaronaPageRoutingModule,
+    NgxMaskIonicModule
   ],
   declarations: [RegistrarCaronaPage]
 })
-export class RegistrarCaronaPageModule {}
+export class RegistrarCaronaPageModule { }
