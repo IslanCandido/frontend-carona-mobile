@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-item button routerLink="/registrar-usuario" color="primary" slot="end">
-      Sing in
+      Me Registrar
       <ion-icon slot="end" name="arrow-forward-circle-outline"></ion-icon>
     </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div id="header">
+  <div id="header"> 
     <h1>Login</h1>
     <img src="assets/icon/logo.png" />
   </div>
@@ -35,7 +35,8 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button (click)="navegar('home')" [disabled]="frm.invalid" expand="block" shape="round">Login</ion-button>
+          <ion-button fill="clear" routerLink="/recuperar-conta" style="margin-top: 10px;">Esqueceu a senha?</ion-button>
+          <ion-button id="btnEntrar" (click)="navegar('home')" [disabled]="frm.invalid" expand="block" shape="round">Login</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

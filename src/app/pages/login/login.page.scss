@@ -35,13 +35,15 @@ ion-toolbar {
       padding-right: 30px;
   
       ion-button {
-        margin-top: 45px;
-        height: 48px;
-        font-size: 18px;
-        text-transform: initial;
-        border-radius: 50px;
-        box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.05);
-        --box-shadow: none;
+        margin-top:60px;
+        #btnEntrar{
+          height: 48px;
+          font-size: 18px;
+          text-transform: initial;
+          border-radius: 50px;
+          box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.05);
+          --box-shadow: none;
+        }
       }
     }
   }

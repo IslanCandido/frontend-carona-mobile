@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'registrar-usuario',
     loadChildren: () => import('./pages/registrar-usuario/registrar-usuario.module').then( m => m.RegistrarUsuarioPageModule)
+  },
+  {
+    path: 'recuperar-conta',
+    loadChildren: () => import('./pages/recuperar-conta/recuperar-conta.module').then( m => m.RecuperarContaPageModule)
   }
 ];
 
