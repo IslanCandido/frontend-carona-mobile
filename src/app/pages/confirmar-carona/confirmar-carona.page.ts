@@ -24,6 +24,8 @@ export class ConfirmarCaronaPage implements OnInit {
 
   obs = '';
 
+  flagDialog: boolean;
+
   mensagem: { remetente, destinatario, assunto, corpo } = { remetente: '', destinatario: '', assunto: '', corpo: '' };
 
 
@@ -43,24 +45,21 @@ export class ConfirmarCaronaPage implements OnInit {
     toast.present();
   }
 
-  async presentToastWithOptions() {
+  async presentToastWithOptions(mensagem) {
     const toast = await this.toastController.create({
-      header: 'Toast header',
-      message: 'Click to Close',
+      message: mensagem,
       position: 'top',
       buttons: [
         {
-          side: 'start',
-          icon: 'star',
-          text: 'Favorite',
+          text: 'Ok',
           handler: () => {
-            console.log('Favorite clicked');
+            this.confirmar();
           }
         }, {
-          text: 'Done',
+          text: 'Voltar',
           role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
+            this.cancelar(this.carona.id);
           }
         }
       ]
@@ -71,9 +70,16 @@ export class ConfirmarCaronaPage implements OnInit {
     console.log('onDidDismiss resolved with role', role);
   }
 
-  confirmar(id) {
-    this.presentToastWithOptions();
-    /*this.consultar(id);
+  escolher(id, flag){
+    this.consultar(id);
+    if(flag){
+      this.presentToastWithOptions('Voçê realmente deseja confirmar a carona?');
+    } else {
+      this.presentToastWithOptions('Voçê realmente deseja cancelar a carona?');
+    }
+  }
+
+  confirmar() {
     this.carona.situacao = "Carona confirmada";
 
     if (this.carona.observacao === '') {
@@ -96,7 +102,7 @@ export class ConfirmarCaronaPage implements OnInit {
       this.caronaService.enviarMensagem(this.mensagem).subscribe(r => {
         this.mensagem = { remetente: '', destinatario: '', assunto: '', corpo: '' };
       });
-    });*/
+    });
   }
 
   cancelar(id) {
