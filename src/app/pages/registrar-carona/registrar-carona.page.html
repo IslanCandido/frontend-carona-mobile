@@ -71,6 +71,13 @@
           </ion-select>
         </ion-item>
       </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Situação</ion-label>
+          <ion-input [(ngModel)]="carona.situacao" name="situacao" readonly="true" autocomplete="off" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-list>
       <ion-grid>
         <ion-row>
           <ion-col>

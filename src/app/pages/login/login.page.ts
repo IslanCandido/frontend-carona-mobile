@@ -30,6 +30,7 @@ export class LoginPage implements OnInit {
   navegar(rota) {
     this.usuarioService.autenticar(this.usu.cpf, this.usu.senha).subscribe(r => {
       if (r) {
+        localStorage.removeItem('usuario');
         localStorage.setItem('usuario', this.usu.cpf);
         this.nav.navigateForward(rota);
       } else {

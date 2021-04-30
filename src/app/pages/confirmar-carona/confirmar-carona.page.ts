@@ -45,9 +45,9 @@ export class ConfirmarCaronaPage implements OnInit {
     toast.present();
   }
 
-  async presentToastWithOptions(mensagem) {
+  async presentToastConfirmar() {
     const toast = await this.toastController.create({
-      message: mensagem,
+      message: 'Voçê realmente deseja confirmar a carona?',
       position: 'top',
       buttons: [
         {
@@ -59,7 +59,7 @@ export class ConfirmarCaronaPage implements OnInit {
           text: 'Voltar',
           role: 'cancel',
           handler: () => {
-            this.cancelar(this.carona.id);
+            this.limpar();
           }
         }
       ]
@@ -67,15 +67,38 @@ export class ConfirmarCaronaPage implements OnInit {
     await toast.present();
 
     const { role } = await toast.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
   }
 
-  escolher(id, flag){
+  async presentToastCancelar(id) {
+    const toast = await this.toastController.create({
+      message: 'Voçê realmente deseja cancelar a carona?',
+      position: 'top',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.cancelar(id);
+          }
+        }, {
+          text: 'Voltar',
+          role: 'cancel',
+          handler: () => {
+            this.limpar();
+          }
+        }
+      ]
+    });
+    await toast.present();
+
+    const { role } = await toast.onDidDismiss();
+  }
+
+  escolher(id, flag) {
     this.consultar(id);
-    if(flag){
-      this.presentToastWithOptions('Voçê realmente deseja confirmar a carona?');
+    if (flag) {
+      this.presentToastConfirmar();
     } else {
-      this.presentToastWithOptions('Voçê realmente deseja cancelar a carona?');
+      this.presentToastCancelar(id);
     }
   }
 
