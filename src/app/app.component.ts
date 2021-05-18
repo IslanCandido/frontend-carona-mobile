@@ -9,8 +9,9 @@ export class AppComponent {
   public appPages = [
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'Buscar Rotas', url: '/buscar-rota', icon: 'earth' },
-    { title: 'Registrar Carona', url: '/registrar-carona', icon: 'car' },
+    { title: 'Pedir Carona', url: '/registrar-carona', icon: 'map' },
     { title: 'Confirmar Carona', url: '/confirmar-carona', icon: 'checkmark-circle' },
+    //{ title: 'Manter Veículo', url: '/manter-veiculo', icon: 'car' }
   ];
 
   usuario: { id, nome, email, cpf, dt_nascimento, sexo, senha } =

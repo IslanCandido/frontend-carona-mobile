@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'recuperar-conta',
     loadChildren: () => import('./pages/recuperar-conta/recuperar-conta.module').then( m => m.RecuperarContaPageModule)
+  },
+  {
+    path: 'manter-veiculo',
+    loadChildren: () => import('./pages/manter-veiculo/manter-veiculo.module').then( m => m.ManterVeiculoPageModule)
   }
 ];
 

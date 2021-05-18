@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Registrar Veículo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <ion-item>
+            <ion-input [(ngModel)]="consultaPlaca" placeholder="Placa do Veículo" name="con-placa" autocomplete="off" type="text" mask="SSS-9999"
+              minlength="8" maxlength="8" [dropSpecialCharacters]="false"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button (click)="consultar(consultaPlaca)" color="primary" size="default" expand="block">
+            <ion-icon slot="start" name="search"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div>
+    <form id="form" #frm="ngForm">
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Placa</ion-label>
+          <ion-input [(ngModel)]="veiculo.placa" id="placa" name="placa" autocomplete="off" type="text" mask="SSS-9999"
+            minlength="8" maxlength="8" [dropSpecialCharacters]="false" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Usuário(CPF)</ion-label>
+          <ion-input [(ngModel)]="veiculo.usuario.cpf" id="cpf" name="cpf" mask="000.000.000-00" minlength="14"
+            maxlength="14" autocomplete="off" type="text" [dropSpecialCharacters]="false" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Renavam</ion-label>
+          <ion-input [(ngModel)]="veiculo.renavam" id="renavam" name="renavam" mask="99999999999" autocomplete="off"
+            type="text" required>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Modelo</ion-label>
+          <ion-input [(ngModel)]="veiculo.modelo" id="modelo" name="modelo" autocomplete="off" type="text"
+            maxlength="50" required>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Cor</ion-label>
+          <ion-input [(ngModel)]="veiculo.cor" id="pontoEncontro" name="pontoEncontro" autocomplete="off" type="text"
+            maxlength="50" required>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Tipo</ion-label>
+          <ion-select [(ngModel)]="veiculo.tipo" id="tipo" name="tipo" okText="Selecionar" cancelText="Cancelar"
+            required>
+            <ion-select-option value="Carro">Carro</ion-select-option>
+            <ion-select-option value="Moto">Moto</ion-select-option>
+            <ion-select-option value="Caminhonete">Caminhonete</ion-select-option>
+            <ion-select-option value="Ônibus">Ônibus</ion-select-option>
+            <ion-select-option value="Kombi">Kombi</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Ano</ion-label>
+          <ion-input [(ngModel)]="veiculo.ano_fabricacao" id="ano_fabricacao" name="ano_fabricacao" type="number"
+            autocomplete="off" min="1980" max="2021" maxlength="4" minlength="4" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Capacidade</ion-label>
+          <ion-input [(ngModel)]="veiculo.capacidade" id="capacidade" name="capacidade" type="number" autocomplete="off"
+            min="1" max="10" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button (click)="salvar(frm)" [disabled]="frm.invalid" color="success" expand="block" shape="round">
+              Salvar
+              <ion-icon slot="start" name="save-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="excluir(veiculo.id, frm)" [disabled]="frm.invalid" color="danger" expand="block"
+              shape="round">
+              Remover
+              <ion-icon slot="start" name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+</ion-content>
