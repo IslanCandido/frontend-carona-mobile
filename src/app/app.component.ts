@@ -6,18 +6,24 @@ import { UsuarioServiceService } from './services/usuario/usuario-service.servic
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
+
+  public appPagesCadastros = [
     { title: 'Home', url: '/home', icon: 'home' },
+    { title: 'Manter Usuário', url: '/registrar-usuario', icon: 'people' },
+    { title: 'Manter Veículo', url: '/manter-veiculo', icon: 'car' },
+    { title: 'Manter Rota', url: '/manter-rota', icon: 'location' }
+  ];
+
+  public appPages = [
     { title: 'Buscar Rotas', url: '/buscar-rota', icon: 'earth' },
     { title: 'Pedir Carona', url: '/registrar-carona', icon: 'map' },
     { title: 'Confirmar Carona', url: '/confirmar-carona', icon: 'checkmark-circle' },
-    //{ title: 'Manter Veículo', url: '/manter-veiculo', icon: 'car' }
   ];
 
   usuario: { id, nome, email, cpf, dt_nascimento, sexo, senha } =
     { id: null, nome: "", email: "", cpf: "", dt_nascimento: "", sexo: "", senha: "" };
 
-  constructor(public usuarioService: UsuarioServiceService) {}
+  constructor(public usuarioService: UsuarioServiceService) { }
 
   ngOnInit() {
     this.consultarUsuario(localStorage.getItem('usuario'));

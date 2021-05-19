@@ -1,10 +1,9 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-menu-button slot="start"></ion-menu-button>
-    <ion-title>Registrar Carona</ion-title>
+    <ion-title>Rota</ion-title>
   </ion-toolbar>
 </ion-header>
-
 
 <ion-content>
   <div>
@@ -12,12 +11,12 @@
       <ion-row>
         <ion-col size="8">
           <ion-item>
-            <ion-input [(ngModel)]="consultaCarona" name="consulta" placeholder="Cod. Verificador" expand="block"
+            <ion-input [(ngModel)]="consultaCodVer" name="consulta" placeholder="Cod. Verificador" expand="block"
               autocomplete="off" type="text" minlength="8" maxlength="8"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="4">
-          <ion-button (click)="consultarCarona(consultaCarona)" color="primary" size="default" expand="block">
+          <ion-button (click)="consultar(consultaCodVer)" color="primary" size="default" expand="block">
             <ion-icon slot="start" name="search"></ion-icon>
           </ion-button>
         </ion-col>
@@ -28,44 +27,53 @@
     <form id="form" #frm="ngForm">
       <ion-list>
         <ion-item>
-          <ion-label position="stacked">Rota</ion-label>
-          <ion-input [(ngModel)]="carona.rota.verificador" (blur)="consultarRota(carona.rota.verificador)"
-            name="codVerificador" readonly="true" autocomplete="off" type="text" required></ion-input>
-        </ion-item>
-      </ion-list>
-      <ion-list>
-        <ion-item>
-          <ion-label position="stacked">Usuário(CPF)</ion-label>
-          <ion-input [(ngModel)]="carona.usuario.cpf" name="cpf" mask="000.000.000-00" minlength="14" maxlength="14"
-            autocomplete="off" type="text" [dropSpecialCharacters]="false" required></ion-input>
+          <ion-label position="stacked">Data</ion-label>
+          <ion-input [(ngModel)]="rota.data" name="data" autocomplete="off" type="date" required>
+          </ion-input>
         </ion-item>
       </ion-list>
       <ion-list>
         <ion-item>
           <ion-label position="stacked">Horário</ion-label>
-          <ion-input [(ngModel)]="carona.horario_aproximado" name="horario" autocomplete="off" type="time" required>
+          <ion-input [(ngModel)]="rota.horario" name="horario" autocomplete="off" type="time" required>
           </ion-input>
         </ion-item>
       </ion-list>
       <ion-list>
         <ion-item>
-          <ion-label position="stacked">Acompanhantes</ion-label>
-          <ion-input [(ngModel)]="carona.acompanhantes" name="acompanhantes" autocomplete="off" type="number" required>
+          <ion-label position="stacked">Veículo</ion-label>
+          <ion-input [(ngModel)]="rota.veiculo.placa" (blur)="consultarVeiculo(rota.veiculo.placa)" name="placa"
+            autocomplete="off" type="text" required>
           </ion-input>
         </ion-item>
       </ion-list>
       <ion-list>
         <ion-item>
-          <ion-label position="stacked">Ponto Encontro</ion-label>
-          <ion-input [(ngModel)]="carona.ponto_encontro" name="pontoEncontro" autocomplete="off" type="text" required>
+          <ion-label position="stacked">Saída</ion-label>
+          <ion-input [(ngModel)]="rota.inicio" name="saida" autocomplete="off" type="text" required>
           </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Destino</ion-label>
+          <ion-input [(ngModel)]="rota.fim" name="destino" autocomplete="off" type="text" required>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Status</ion-label>
+          <ion-select [(ngModel)]="rota.status" name="status" okText="Selecionar" cancelText="Cancelar" required>
+            <ion-select-option value="Disponivel">Disponivel</ion-select-option>
+            <ion-select-option value="Indisponivel">Indisponivel</ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-list>
       <ion-list>
         <ion-item>
           <ion-label position="stacked">Contribuição</ion-label>
-          <ion-select [(ngModel)]="carona.contribuicao.id" name="contribuicao" okText="Selecionar"
-            cancelText="Cancelar">
+          <ion-select [(ngModel)]="rota.contribuicao.id" name="contribuicao" okText="Selecionar" cancelText="Cancelar">
             <ion-select-option *ngFor="let contribuicao of contribuicoes" value="{{ contribuicao.id }}">
               {{contribuicao.tipo }}({{ contribuicao.valor }})
             </ion-select-option>
@@ -74,8 +82,8 @@
       </ion-list>
       <ion-list>
         <ion-item>
-          <ion-label position="stacked">Situação</ion-label>
-          <ion-input [(ngModel)]="carona.situacao" name="situacao" readonly="true" autocomplete="off" type="text">
+          <ion-label position="stacked">Verificador</ion-label>
+          <ion-input [(ngModel)]="rota.verificador" name="verificador" readonly="true" autocomplete="off" type="text">
           </ion-input>
         </ion-item>
       </ion-list>
@@ -88,7 +96,7 @@
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button (click)="excluir(carona.id, frm)" [disabled]="frm.invalid" color="danger" expand="block"
+            <ion-button (click)="excluir(rota.id, frm)" [disabled]="frm.invalid" color="danger" expand="block"
               shape="round">
               Remover
               <ion-icon slot="start" name="trash-outline"></ion-icon>

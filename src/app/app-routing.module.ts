@@ -42,6 +42,10 @@ const routes: Routes = [
   {
     path: 'manter-veiculo',
     loadChildren: () => import('./pages/manter-veiculo/manter-veiculo.module').then( m => m.ManterVeiculoPageModule)
+  },
+  {
+    path: 'manter-rota',
+    loadChildren: () => import('./pages/manter-rota/manter-rota/manter-rota.module').then( m => m.ManterRotaPageModule)
   }
 ];
 
