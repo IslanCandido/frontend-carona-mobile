@@ -12,7 +12,8 @@
         <ion-item>
           <ion-label position="stacked">
             <ion-icon slot="end" name="chatbubble-ellipses-sharp"></ion-icon>
-            Mensagem</ion-label>
+            Mensagem
+          </ion-label>
           <ion-textarea [(ngModel)]="obs" name="observacao" rows="3" cols="20"></ion-textarea>
         </ion-item>
       </ion-col>
@@ -27,7 +28,8 @@
           <ion-label>{{ carona.rota.data | date:"dd/MM/yyyy" }} - {{ carona.horario_aproximado }}</ion-label>
         </ion-item>
         <ion-item>
-          <ion-icon button (click)="escolher(carona.id, true)" color="success" slot="end" name="checkmark-circle-outline">
+          <ion-icon button (click)="escolher(carona.id, true)" color="success" slot="end"
+            name="checkmark-circle-outline">
           </ion-icon>
           <ion-icon button (click)="escolher(carona.id, false)" color="danger" slot="end" name="close-circle-outline">
           </ion-icon>
@@ -42,6 +44,11 @@
       <ion-item>
         <ion-icon color="danger" slot="start" name="location-sharp"></ion-icon>
         <ion-label>{{ carona.ponto_encontro }}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon color="danger" slot="start" name="arrow-forward-outline"></ion-icon>
+        <ion-label>{{ carona.rota.fim }}</ion-label>
       </ion-item>
 
       <ion-item>

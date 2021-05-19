@@ -25,6 +25,10 @@ export class UsuarioServiceService {
     return this.http.post(`http://localhost:8080/usuarios`, usuario);
   }
 
+  public delete(id): Observable<any> {
+    return this.http.delete(`http://localhost:8080/usuarios/${id}`);
+  }
+
   public autenticar(cpf, senha) {
     return this.http.get(`http://localhost:8080/usuarios/autenticar/${cpf}/${senha}`);
   }

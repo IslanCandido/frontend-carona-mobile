@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <ion-item>
+            <ion-input [(ngModel)]="consultaCPF" name="consulta" autocomplete="off" type="text" mask="000.000.000-00"
+              placeholder="Cpf do Usuário" expand="block" minlength="14" maxlength="14" [dropSpecialCharacters]="false"
+              required></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button (click)="consultar(consultaCPF)" color="primary" size="default" expand="block">
+            <ion-icon slot="start" name="search"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div>
+    <form id="form" #frm="ngForm">
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Nome</ion-label>
+          <ion-input [(ngModel)]="usuario.nome" name="nome" autocomplete="off" type="text" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">CPF</ion-label>
+          <ion-input [(ngModel)]="usuario.cpf" name="cpf" autocomplete="off" type="text" mask="000.000.000-00"
+            minlength="14" maxlength="14" [dropSpecialCharacters]="false" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input [(ngModel)]="usuario.email" name="email" autocomplete="off" type="email" required email>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Dt. Nascimento</ion-label>
+          <ion-input [(ngModel)]="usuario.dt_nascimento" name="dt_nascimento" autocomplete="off" type="date" required>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Sexo</ion-label>
+          <ion-select [(ngModel)]="usuario.sexo" name="sexo" okText="Selecionar" cancelText="Cancelar" required>
+            <ion-select-option value="M">Masculino</ion-select-option>
+            <ion-select-option value="F">Feminino</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Senha</ion-label>
+          <ion-input [(ngModel)]="usuario.senha" name="senha" autocomplete="off" type="password" minlength="8"
+            maxlength="20" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button (click)="salvar(frm)" [disabled]="frm.invalid" color="success" expand="block" shape="round">
+              Salvar
+              <ion-icon slot="start" name="save-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="excluir(usuario.id, frm)" [disabled]="frm.invalid" color="danger" expand="block"
+              shape="round">
+              Remover
+              <ion-icon slot="start" name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+</ion-content>

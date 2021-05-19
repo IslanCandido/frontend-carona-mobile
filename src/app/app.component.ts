@@ -9,7 +9,7 @@ export class AppComponent {
 
   public appPagesCadastros = [
     { title: 'Home', url: '/home', icon: 'home' },
-    { title: 'Manter Usuário', url: '/registrar-usuario', icon: 'people' },
+    { title: 'Manter Usuário', url: '/manter-usuario', icon: 'people' },
     { title: 'Manter Veículo', url: '/manter-veiculo', icon: 'car' },
     { title: 'Manter Rota', url: '/manter-rota', icon: 'location' }
   ];
