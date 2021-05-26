@@ -13,13 +13,10 @@ export class RecuperarContaPage implements OnInit {
     public usuarioService: UsuarioServiceService,
     public toastController: ToastController) { }
 
-  usuario: { id, nome, email, cpf, dt_nascimento, sexo, senha } =
-    { id: null, nome: "", email: "", cpf: "", dt_nascimento: "", sexo: "", senha: "" };
-
   email: { remetente, destinatario, assunto, corpo } =
     { remetente: '', destinatario: '', assunto: '', corpo: '' };
 
-  confirmarSenha;
+  descEmail
 
   ngOnInit() {
   }
@@ -34,47 +31,25 @@ export class RecuperarContaPage implements OnInit {
   }
 
   recuperar(form) {
-    if (this.usuario.senha === this.confirmarSenha) {
-      this.usuarioService.post(this.usuario).subscribe(resultado => {
-        this.email = {
-          remetente: 'runsistemadecarona@gmail.com', destinatario: this.usuario.email,
-          assunto: 'Recuperação de Conta realizada!',
-          corpo: 'Olá ' + this.usuario.nome + '\n\nAviso: A recuperação da sua conta foi feita com sucesso!\natt: RUN - Sistema de Carona'
-        }
-        this.presentToast('Conta recuperada!');
-        this.limpar(form);
-
-        this.usuarioService.enviarMensagem(this.email).subscribe(r => {
-          this.email = { remetente: '', destinatario: '', assunto: '', corpo: '' };
-        });
-      });
-    } else {
-      this.presentToast('Senhas são incompativeis.');
+    this.email = {
+      remetente: 'runsistemadecarona@gmail.com', destinatario: this.descEmail,
+      assunto: 'Recuperação de Conta.',
+      corpo: 'Alguém, espero que você, solicitou a redefinição da senha da sua conta RUN - Sistema de carona.\n\n'
+        + 'Se você não realizou essa solicitação, pode ignorar este e-mail com segurança.\n'
+        + 'Caso contrário, clique no link abaixo para concluir o processo.\n\n'
+        + 'http://localhost:4200/recuperar-conta'
     }
-  }
+    this.presentToast('Email Enviado!');
+    this.limpar(form);
 
-  consultar(cpf) {
-    this.usuarioService.getByCpf(cpf).subscribe(dados => {
-      if (!dados) {
-        this.presentToast('Usuário não encontrado.');
-        this.usuario = { id: null, nome: "", email: "", cpf: "", dt_nascimento: "", sexo: "", senha: "" };
-      } else {
-        this.usuario = {
-          id: dados.id,
-          nome: dados.nome,
-          email: dados.email,
-          cpf: dados.cpf,
-          dt_nascimento: dados.dt_nascimento,
-          sexo: dados.sexo,
-          senha: ""
-        };
-      }
+    this.usuarioService.enviarMensagem(this.email).subscribe(r => {
+      this.email = { remetente: '', destinatario: '', assunto: '', corpo: '' };
     });
   }
 
   limpar(form) {
+    this.descEmail = '';
     form.reset();
-    this.usuario = { id: null, nome: "", email: "", cpf: "", dt_nascimento: "", sexo: "", senha: "" };
   }
 
   voltarLogin() {
