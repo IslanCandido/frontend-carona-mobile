@@ -69,19 +69,27 @@
             maxlength="20" required></ion-input>
         </ion-item>
       </ion-list>
+      <ion-list>
+        <ion-item color="medium" id="contatos" button routerLink="/manter-contato">
+          <ion-icon slot="end" name="call-outline"></ion-icon>
+          <ion-button fill="clear" color="light" routerLink="/manter-contato" style="margin-top: 10px;">Cadastrar
+            Contatos
+          </ion-button>
+        </ion-item>
+      </ion-list>
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-button (click)="salvar(frm)" [disabled]="frm.invalid" color="success" expand="block" shape="round">
+            <ion-button id="btnSalvar" (click)="salvar(frm)" [disabled]="frm.invalid" color="tertiary" expand="block">
               Salvar
-              <ion-icon slot="start" name="save-outline"></ion-icon>
+              <ion-icon slot="start" color="success" name="save-outline"></ion-icon>
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button (click)="excluir(usuario.id, frm)" [disabled]="frm.invalid" color="danger" expand="block"
-              shape="round">
+            <ion-button id="btnExcluir" (click)="excluir(usuario.id, frm)" [disabled]="frm.invalid" color="secondary"
+              expand="block">
               Remover
-              <ion-icon slot="start" name="trash-outline"></ion-icon>
+              <ion-icon slot="start" color="danger" name="trash-outline"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>

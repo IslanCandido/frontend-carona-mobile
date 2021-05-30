@@ -142,8 +142,9 @@ export class ManterVeiculoPage implements OnInit {
   excluir(id, form) {
     this.veiculoService.delete(id).subscribe(resultado => {
       this.limpar(form);
-      this.presentToast('Usuário removido com sucesso!');
+      this.presentToast('Veículo removido com sucesso!');
     });
+    this.presentToast('Veículo não pode ser removido!');
   }
 
   consultar(placa) {

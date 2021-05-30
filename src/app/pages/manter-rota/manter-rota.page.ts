@@ -105,6 +105,7 @@ export class ManterRotaPage implements OnInit {
       this.limpar(form);
       this.presentToast('Rota removida com sucesso!');
     });
+    this.presentToast('Rota não pode ser removido!');
   }
 
   consultar(verificador) {

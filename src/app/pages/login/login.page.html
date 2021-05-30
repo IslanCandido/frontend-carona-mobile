@@ -9,7 +9,6 @@
 
 <ion-content>
   <div id="header"> 
-    <h1>Login</h1>
     <img src="assets/icon/logo.png" />
   </div>
 
@@ -35,8 +34,8 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button fill="clear" routerLink="/recuperar-conta" style="margin-top: 10px;">Esqueceu a senha?</ion-button>
-          <ion-button id="btnEntrar" (click)="navegar('home')" [disabled]="frm.invalid" expand="block" shape="round">Login</ion-button>
+          <ion-button fill="clear" color="primary" (click)="recuperarConta()" style="margin-top: 10px;">Esqueceu a senha?</ion-button>
+          <ion-button id="btnEntrar" color="primary" (click)="navegar('home')" [disabled]="frm.invalid" expand="block" >Login</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

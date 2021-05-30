@@ -33,11 +33,10 @@ export class RegistrarUsuarioPage implements OnInit {
   }
 
   salvar(form) {
-    console.log(this.usuario);
     this.usuarioService.getCpfIgual(this.usuario.cpf).subscribe(r => {
       if (r) {
         if (this.usuario.id === null) {
-          this.presentToast('CPF ja foi cadastrado no sistema!');
+          this.presentToast('CPF existe no sistema, faça login ou recupere sua senha!');
         } else {
           this.usuarioService.post(this.usuario).subscribe(resultado => {
             this.limpar(form);
@@ -55,7 +54,7 @@ export class RegistrarUsuarioPage implements OnInit {
         }
       }
     });
-
+    this.nav.navigateForward('manter-usuario');
   }
 
   limpar(form) {

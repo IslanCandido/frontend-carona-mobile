@@ -1,4 +1,4 @@
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { CaronaServiceService } from 'src/app/services/carona/carona-service.service';
 
@@ -30,7 +30,8 @@ export class ConfirmarCaronaPage implements OnInit {
 
 
   constructor(private caronaService: CaronaServiceService,
-    public toastController: ToastController) { }
+    public toastController: ToastController,
+    public alertController: AlertController) { }
 
   ngOnInit() {
     this.caronaService.getCaronasEmAndamento(localStorage.getItem('usuario'), "Em andamento").subscribe(resultado => { this.caronas = resultado });
@@ -46,17 +47,17 @@ export class ConfirmarCaronaPage implements OnInit {
   }
 
   async presentToastConfirmar() {
-    const toast = await this.toastController.create({
-      message: 'Voçê realmente deseja confirmar a carona?',
-      position: 'top',
+    const alert = await this.alertController.create({
+      message: 'Você realmente deseja confirmar a carona?',
+      header: 'Confirmar Carona',
       buttons: [
         {
-          text: 'Ok',
+          text: 'Confirmar',
           handler: () => {
             this.confirmar();
           }
         }, {
-          text: 'Voltar',
+          text: 'Cancelar',
           role: 'cancel',
           handler: () => {
             this.limpar();
@@ -64,18 +65,18 @@ export class ConfirmarCaronaPage implements OnInit {
         }
       ]
     });
-    await toast.present();
+    await alert.present();
 
-    const { role } = await toast.onDidDismiss();
+    const { role } = await alert.onDidDismiss();
   }
 
   async presentToastCancelar(id) {
-    const toast = await this.toastController.create({
-      message: 'Voçê realmente deseja cancelar a carona?',
-      position: 'top',
+    const alert = await this.alertController.create({
+      message: 'Você realmente deseja cancelar a carona?',
+      header: 'Cancelar Carona',
       buttons: [
         {
-          text: 'Ok',
+          text: 'Cancelar',
           handler: () => {
             this.cancelar(id);
           }
@@ -88,9 +89,9 @@ export class ConfirmarCaronaPage implements OnInit {
         }
       ]
     });
-    await toast.present();
+    await alert.present();
 
-    const { role } = await toast.onDidDismiss();
+    const { role } = await alert.onDidDismiss();
   }
 
   escolher(id, flag) {

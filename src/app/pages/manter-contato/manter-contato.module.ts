@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RecuperarContaPageRoutingModule } from './recuperar-conta-routing.module';
+import { ManterContatoPageRoutingModule } from './manter-contato-routing.module';
 
-import { RecuperarContaPage } from './recuperar-conta.page';
+import { ManterContatoPage } from './manter-contato.page';
 
 import {NgxMaskIonicModule} from 'ngx-mask-ionic'
 
@@ -15,9 +15,9 @@ import {NgxMaskIonicModule} from 'ngx-mask-ionic'
     CommonModule,
     FormsModule,
     IonicModule,
-    RecuperarContaPageRoutingModule,
+    ManterContatoPageRoutingModule,
     NgxMaskIonicModule
   ],
-  declarations: [RecuperarContaPage]
+  declarations: [ManterContatoPage]
 })
-export class RecuperarContaPageModule {}
+export class ManterContatoPageModule {}

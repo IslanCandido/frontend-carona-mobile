@@ -41,10 +41,10 @@
       </ion-list>
       <ion-list>
         <ion-item>
-          <ion-label position="stacked">Veículo</ion-label>
-          <ion-input [(ngModel)]="rota.veiculo.placa" (blur)="consultarVeiculo(rota.veiculo.placa)" name="placa"
-            autocomplete="off" type="text" required>
-          </ion-input>
+          <ion-label position="stacked">Veículo (Placa)</ion-label>
+          <ion-input [(ngModel)]="rota.veiculo.placa" (blur)="consultarVeiculo(rota.veiculo.placa)" id="placa"
+            name="placa" autocomplete="off" type="text" mask="AAA-0000" minlength="8" maxlength="8"
+            [dropSpecialCharacters]="false" required></ion-input>
         </ion-item>
       </ion-list>
       <ion-list>
@@ -90,16 +90,15 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-button (click)="salvar(frm)" [disabled]="frm.invalid" color="success" expand="block" shape="round">
+            <ion-button (click)="salvar(frm)" [disabled]="frm.invalid" color="tertiary" expand="block">
               Salvar
-              <ion-icon slot="start" name="save-outline"></ion-icon>
+              <ion-icon slot="start" color="success" name="save-outline"></ion-icon>
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button (click)="excluir(rota.id, frm)" [disabled]="frm.invalid" color="danger" expand="block"
-              shape="round">
+            <ion-button (click)="excluir(rota.id, frm)" [disabled]="frm.invalid" color="secondary" expand="block">
               Remover
-              <ion-icon slot="start" name="trash-outline"></ion-icon>
+              <ion-icon slot="start" color="danger" name="trash-outline"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>

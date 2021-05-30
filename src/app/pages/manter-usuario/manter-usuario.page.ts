@@ -68,6 +68,7 @@ export class ManterUsuarioPage implements OnInit {
         this.presentToast('Usuário removido com sucesso!');
       }
     });
+    this.presentToast('Usuário não pode ser removido!');
   }
 
   consultar(cpf) {

@@ -53,9 +53,9 @@
             maxlength="20" required></ion-input>
         </ion-item>
       </ion-list>
-      <ion-button (click)="salvar(frm)" [disabled]="frm.invalid" color="primary" expand="block" shape="round">
+      <ion-button (click)="salvar(frm)" color="tertiary" [disabled]="frm.invalid" expand="block">
         Salvar
-        <ion-icon slot="start" name="save-outline"></ion-icon>
+        <ion-icon slot="start" color="success" name="save-outline"></ion-icon>
       </ion-button>
     </form>
   </div>

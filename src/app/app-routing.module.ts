@@ -36,10 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/registrar-usuario/registrar-usuario.module').then( m => m.RegistrarUsuarioPageModule)
   },
   {
-    path: 'recuperar-conta',
-    loadChildren: () => import('./pages/recuperar-conta/recuperar-conta.module').then( m => m.RecuperarContaPageModule)
-  },
-  {
     path: 'manter-veiculo',
     loadChildren: () => import('./pages/manter-veiculo/manter-veiculo.module').then( m => m.ManterVeiculoPageModule)
   },
@@ -50,6 +46,10 @@ const routes: Routes = [
   {
     path: 'manter-rota',
     loadChildren: () => import('./pages/manter-rota/manter-rota.module').then( m => m.ManterRotaPageModule)
+  },
+  {
+    path: 'manter-contato',
+    loadChildren: () => import('./pages/manter-contato/manter-contato.module').then( m => m.ManterContatoPageModule)
   }
 ];
 

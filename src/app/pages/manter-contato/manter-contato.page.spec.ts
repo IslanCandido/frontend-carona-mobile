@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { RecuperarContaPage } from './recuperar-conta.page';
+import { ManterContatoPage } from './manter-contato.page';
 
-describe('RecuperarContaPage', () => {
-  let component: RecuperarContaPage;
-  let fixture: ComponentFixture<RecuperarContaPage>;
+describe('ManterContatoPage', () => {
+  let component: ManterContatoPage;
+  let fixture: ComponentFixture<ManterContatoPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecuperarContaPage ],
+      declarations: [ ManterContatoPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RecuperarContaPage);
+    fixture = TestBed.createComponent(ManterContatoPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
