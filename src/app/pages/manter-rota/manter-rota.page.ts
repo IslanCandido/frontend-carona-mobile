@@ -31,7 +31,6 @@ export class ManterRotaPage implements OnInit {
     this.rotaService.getVeiculos().subscribe(resultado => { this.veiculos = resultado });
     this.gerarVerificador();
     this.consultarVeiculo(this.rota.veiculo.placa);
-
   }
 
   async presentToast(mensagem: string) {
@@ -179,7 +178,15 @@ export class ManterRotaPage implements OnInit {
     cod.toLowerCase();
 
     this.rota.verificador = cod;
+  }
 
+  abrirCadastroCont() {
+    localStorage.setItem('flagRota', "true");
+    localStorage.setItem('flagCarona', "false");
+  }
+  
+  atualizarCont() {
+    this.rotaService.getContribuicoes().subscribe(resultado => { this.contribuicoes = resultado });
   }
 
   getData(data) {

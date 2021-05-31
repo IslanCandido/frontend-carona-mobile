@@ -50,6 +50,10 @@ const routes: Routes = [
   {
     path: 'manter-contato',
     loadChildren: () => import('./pages/manter-contato/manter-contato.module').then( m => m.ManterContatoPageModule)
+  },
+  {
+    path: 'manter-contribuicao',
+    loadChildren: () => import('./pages/manter-contribuicao/manter-contribuicao.module').then( m => m.ManterContribuicaoPageModule)
   }
 ];
 

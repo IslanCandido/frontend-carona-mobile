@@ -202,4 +202,12 @@ export class RegistrarCaronaPage implements OnInit {
     this.carona.rota.verificador = localStorage.getItem('verificadorRotaSelecionada');
   }
 
+  abrirCadastroCont() {
+    localStorage.setItem('flagRota', "false");
+    localStorage.setItem('flagCarona', "true");
+  }
+
+  atualizarCont() {
+    this.caronaService.getContribuicoes().subscribe(resultado => { this.contribuicoes = resultado });
+  }
 }
